@@ -252,10 +252,10 @@ export default {
 		console.log(option.cid); //打印出上个页面传递的参数。
 	},
 	onReady(){
-		this.calcAnchor();//计算锚点高度，页面数据是ajax加载时，请把此行放在数据渲染完成事件中执行以保证高度计算正确
+		//this.calcAnchor();//计算锚点高度，页面数据是ajax加载时，请把此行放在数据渲染完成事件中执行以保证高度计算正确
 	},
 	onPageScroll(e) {
-		//锚点切换
+		/* //锚点切换
 		this.selectAnchor = e.scrollTop>=this.anchorlist[2].top?2:e.scrollTop>=this.anchorlist[1].top?1:0;
 		//导航栏渐变
 		let tmpY = 375;
@@ -264,7 +264,7 @@ export default {
 		this.beforeHeaderOpacity = 1 - this.afterHeaderOpacity;
 		//切换层级
 		this.beforeHeaderzIndex = e.scrollTop > 0 ? 10 : 11;
-		this.afterHeaderzIndex = e.scrollTop > 0 ? 11 : 10;
+		this.afterHeaderzIndex = e.scrollTop > 0 ? 11 : 10; */
 	},
 	//上拉加载，需要自己在page.json文件中配置"onReachBottomDistance"
 	onReachBottom() {
