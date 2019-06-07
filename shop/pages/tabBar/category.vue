@@ -49,7 +49,7 @@
 </template>
 <script>
 	//高德SDK
-	import amap from '@/common/SDK/amap-wx.js';
+	//import amap from '@/common/SDK/amap-wx.js';
 	export default {
 		data() {
 			return {
@@ -99,7 +99,7 @@
 			}
 		},
 		onLoad() {
-			this.amapPlugin = new amap.AMapWX({  
+			/* this.amapPlugin = new amap.AMapWX({  
 				//高德地图KEY，随时失效，请务必替换为自己的KEY，参考：http://ask.dcloud.net.cn/article/35070
 				key: '7c235a9ac4e25e482614c6b8eac6fd8e'  
 			});
@@ -108,7 +108,7 @@
 				success: (data) => {
 					this.city = data[0].regeocodeData.addressComponent.city.replace(/市/g,'');//把"市"去掉
 				}  
-			}); 
+			}); */
 		},
 		methods: {
 			//消息列表

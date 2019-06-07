@@ -6,11 +6,11 @@
 				<form>
 					<view class="cu-form-group margin-top">
 						<view class="title">文字一</view>
-						<input id="text1" placeholder="两字短标题" name="input" @input="editWenZi"></input>
+						<input id="text1" placeholder="两字短标题" name="input" @focus="enterEdit" @input="editWenZi" @blur="exitEdit"></input>
 					</view>
-					<view class="cu-form-group">
-						<view class="title">图片</view>
-						<input placeholder="三字标题" name="input"></input>
+					<view class="padding">
+						<text class="title">图片</text>
+						<view class="cu-avatar margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big81005.jpg);"></view>
 					</view>
 				</form>
 			</scroll-view>
@@ -65,7 +65,7 @@
 			},
 			drawRegionImg () {
 				var img = new this.tcanvas.Image("../../static/img/md.png",{
-					src:"",
+					id:"image1",
 					left:0,
 					top:0,
 					scaleX:this.cvsWidth,
@@ -88,6 +88,14 @@
 			editWenZi (event) {
 				let textObj = this.tcanvas.utils.get(event.target.id)
 				textObj.setTextValue(event.target.value)
+			},
+			enterEdit (event) {
+				let textObj = this.tcanvas.utils.get(event.target.id)
+				textObj.onEdit();
+			},
+			exitEdit (event) {
+				let textObj = this.tcanvas.utils.get(event.target.id)
+				textObj.offEdit();
 			}
 		}
 	}
@@ -121,5 +129,9 @@
 	
 	.cu-form-group .title {
 		min-width: calc(4em + 15px);
+	}
+	
+	.margin-left {
+		margin-left: 45px;
 	}
 </style>
