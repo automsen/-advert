@@ -53,7 +53,7 @@ var tcanvas = {
 		},
 		this.offEdit = function(flag){
 			if (!flag){
-				tcanvas.utils._obj2onEdit();
+				tcanvas.utils._obj2OffEdit();
 			}
 			this.isEdit = false;
 			this.changeCount--;
@@ -132,7 +132,7 @@ var tcanvas = {
 	Image : function(image, imageObj) {
 		//继承父类
 		tcanvas.CanvasObj.call(this);
-		this.onEdit();
+		//this.offEdit();
 		imageObj.type = "image";
 		imageObj.renderFunction = function(){
 			var context = tcanvas.getContext();
