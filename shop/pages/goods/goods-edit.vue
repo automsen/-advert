@@ -99,9 +99,9 @@
 			uni.getSystemInfo({
 				success: function(e) {
 					_this.cvsWidth = e.windowWidth;
-					_this.cvsHeight = e.windowHeight / 3;
+					_this.cvsHeight = e.windowHeight / 2;
 					_this.tcanvas = tcvs.initContext(uni.createCanvasContext('canvas',_this), "wx-app");
-					
+
 					if (templeteData['height'] >= templeteData['width']) {
 						if (templeteData['height'] > _this.cvsHeight) {
 							//.toFixed(2)
@@ -115,6 +115,7 @@
 							_this.cvsHeight = _this.cvsScale * templeteData['height']
 						}
 					}
+					_this.tcanvas.setCvsScale(_this.cvsScale);
 					_this.initContent();
 				}
 			})
@@ -138,21 +139,24 @@
 					if ("image" == imageType) {
 						imageObj = new this.tcanvas.Image(imageData['url'],{
 							id:imageData['name'],
-							left:coordinate[0] * this.cvsScale,
-							top:coordinate[1] * this.cvsScale,
-							scaleX:size[0] * this.cvsScale,
-							scaleY:size[1] * this.cvsScale
+							left:coordinate[0],
+							top:coordinate[1],
+							scaleX:size[0],
+							scaleY:size[1]
 						})
 					} else if ("text" == imageType) {
 						var textStyle = imageData['textStyle'][0];
 						console.log(textStyle['fontSize'] + " == " + Math.round(textStyle['fontSize'] * this.cvsScale))
 						console.log(coordinate[0] * this.cvsScale + "--" + coordinate[1] * this.cvsScale)
+						var fontFamily = textStyle['font']['Name'];
+						console.log(fontFamily);
 						imageObj = new this.tcanvas.Text(imageData['val'],{
 							id:imageData['name'],
-							left:(coordinate[0] + size[0] / 2) * this.cvsScale,
-							top:coordinate[1] * this.cvsScale,
-							fontSize:Math.round(textStyle['fontSize'] * this.cvsScale),
-							maxWidth:size[0] * 1.5
+							left:coordinate[0],
+							top:coordinate[1],
+							fontSize:textStyle['fontSize'] ,
+							fontFamily:fontFamily + ",serif",
+							maxWidth:size[0]
 						})
 					}
 					this.tcanvas.utils.add(imageObj);
